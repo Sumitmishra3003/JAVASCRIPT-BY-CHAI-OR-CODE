@@ -103,3 +103,5 @@ const mycoding = [
 mycoding.forEach( function (item) {
     console.log(item.languagefile)  // we have object inside array and this is how we axcess the elements of object
 })
+
+// for each does not return any value it only print the value
