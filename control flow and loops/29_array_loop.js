@@ -105,3 +105,4 @@ mycoding.forEach( function (item) {
 })
 
 // for each does not return any value it only print the value
+
