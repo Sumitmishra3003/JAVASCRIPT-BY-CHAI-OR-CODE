@@ -150,6 +150,44 @@ data is devided based on the memory location (call by values and call by refrenc
 javascript is dynamic type language
  return type of non premetive datatypes is object
 
+ ? (Ternary Operator)
+👉 What it is
+? : is called the conditional (ternary) operator.
+👉 It is a short form of if...else.
+🔹 Syntax
+condition ? valueIfTrue : valueIfFalse
+🧪 Example 1: Simple condition
+let age = 20;
+let result = age >= 18 ? "Adult" : "Minor";
+console.log(result);
+// "Adult"
+
+?? (Nullish Coalescing Operator)
+👉 What it is
+?? returns the right-hand value ONLY if left-hand value is null or undefined.
+📌 It does NOT treat 0, false, or "" as empty.
+🔹 Syntax
+value1 ?? value2
+
+🧪 Example 1: Basic usage
+let username = null;
+let name = username ?? "Guest";
+console.log(name);
+// "Guest"
+
+Example 2: With undefined
+let score;
+let finalScore = score ?? 0;
+console.log(finalScore);
+// 0
+
+
+/ flasy values : false, 0, -0, bigint 0n, "", null, undefined, NaN
+// truthy values : "0", "false", " ", [], {}, function(){}
+// value other then that are truthy values
+
+
+
 
 
 
