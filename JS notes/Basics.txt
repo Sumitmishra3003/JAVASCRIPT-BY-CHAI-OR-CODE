@@ -1,0 +1,155 @@
+var, let and const.
+
+var : 
+1 - var is function scoped not block "{}" scoped
+if (true) {
+  var x = 10;
+}
+console.log(x); // ✅ 10 (still accessible)
+
+2 - it can be re decleared
+var a = 5;
+var a = 10;
+console.log(a); // 10  it is danderous and confusing
+
+3 - hoisting : JavaScript moves variable and function declarations to the top of the code before execution.
+var is hoisted and initialized as undefined
+console.log(c); // undefined
+let c = 20;
+
+
+let :
+
+1 - let is blocked scope
+
+2 - Cannot be re-declared in same scope
+let a = 5;
+let a = 10; // ❌ Error
+
+3 - can be updated
+let b = 1;
+b = 2; // ✅ allowed
+
+4 - let is hoisted BUT not initialized
+console.log(c); // ❌ Error
+let c = 20;
+
+
+Const :
+
+1 - const is also block-scoped (same as let)
+
+2 - it cannot be re-decleared
+const a = 5;
+const a = 10; // ❌ Error
+
+3 - it cannot be updated
+const b = 5;
+b = 10; // ❌ Error
+
+4 - you must assign value imeideatly 
+const x; // ❌ Error
+const x = 10;  // correct
+
+5 - arrays
+const arr = [1, 2, 3];
+arr.push(4); // ✅ allowed
+arr = [5, 6]; // ❌ Error
+
+6 - object
+const obj = { name: "Sumit" };
+obj.name = "Mishra"; // ✅ allowed
+
+
+🔥 Quick Comparison Table
+Feature     	var	             let	        const
+Scope       	Function	     Block      	Block
+Re-declare   	✅ Yes	       ❌ No	         ❌ No
+Update value	✅ Yes	       ✅ Yes	     ❌ No
+Hoisting    	Yes (undefined)	Yes (TDZ)	    Yes (TDZ)
+Safe to use 	❌ No	      ✅ Yes        	✅ Best
+
+
+
+
+conversions
+
+let score = "33"
+console.log(typeof score)  string
+let valueInNumber = Number(score)  // N should be in capital letters
+console.log(typeof valueInNumber) // it convert all type of datatypes into number
+//"33" - 33
+//"33abc" - NaN
+// true - 1
+
+let isloggedin = 1
+let booleanloggedin = Boolean(isloggedin)  // B should be in capital
+console.log(booleanloggedin) // converts all data types into boolean
+// for empty string, boolean gives false
+// for "sumit" boolean gives true
+
+
+
+Comparisons
+
+console.log(null > 0) // flase
+console.log(null == 0) // false
+console.log(null >= 0) // true  comparison operator converts null to a number(0)
+
+console.log(undefined == 0) // false
+console.log(undefined > 0) // false
+console.log(undefined < 0) // false
+
+// "==" and comparison operators works differently
+//"===" it checks the value as well as data types
+console.log("2" == 2) // true
+console.log("2" === 2) // false
+
+
+
+
+
+
+basic operations
+
+console.log(2**3)  // it means that 2 ki power 3
+
+let str1 = "sumit"
+let str2 = " mishra"
+let str3 = str1+str2 // for concatination 
+console.log(str3)
+
+
+
+
+Math operations
+
+console.log(Math)  it gives an object
+console.log(Math.abs(-4))  // gives +ive value
+console.log(Math.round(4.3)) //gives the roundoff
+console.log(Math.ceil(4.1))
+console.log(Math.floor(2.9))
+console.log(Math.min(1,2,3,4))
+console.log(Math.max(1,2,3,4))
+console.log(Math.random()) // gives the randon values between 0 and 1 but 1 is excluded
+console.log((Math.random())+1) // gives the value between 1 and 2 and 2 is excluded
+console.log((Math.random()*10) + 1) // gives the value between 1 and 10
+
+
+
+
+
+data types in js
+
+data is devided based on the memory location (call by values and call by refrence)
+
+ premetive data types(passs by values) : string, numbers, boolean, null undefined, symbols, bigint.
+
+ non premetive(pass by refrenve) : array, object, function.
+
+javascript is dynamic type language
+ return type of non premetive datatypes is object
+
+
+
+

@@ -1,0 +1,88 @@
+Strings.
+
+A string is a sequence of characters used to store text.
+
+best way to create string is Using Backticks (Template Literals)
+let name = "Sumit";
+let msg = `Hello ${name}`;
+console.log(msg); // Hello Sumit
+
+Backticks allows
+Variable interpolation
+Multi-line strings
+
+accessing characters
+let str = "Hello";
+console.log(str[0]); // H
+console.log(str.charAt(1)); // e
+
+you cannot change a string directly
+let str = "Hello";
+str[0] = "h";
+console.log(str); // Hello (no change)
+
+functionalaties of string
+
+let str = "JavaScript";
+1 - console.log(str.length); // 10
+
+2 - "hello".toUpperCase(); // HELLO // same for lower case
+
+3 - trim(): Removes spaces from start & end
+"  hi  ".trim(); // "hi"
+
+4 - slice(start, end) : Extracts part of string
+let str = "JavaScript";
+str.slice(0, 4); // Java
+
+5 - substring(start, end) : Similar to slice (no negative index)
+str.substring(4, 10); // Script
+
+6 - replace()
+"Hello World".replace("World", "JS");
+// Hello JS
+
+7 - includes()
+"JavaScript".includes("Script"); // true  gives boolean result
+
+8 - split() : Converts string → array
+"apple,banana,mango".split(",");
+// ["apple", "banana", "mango"]
+
+9 - String + Number
+"5" + 2; // "52"
+"5" - 2; // 3
+👉 + → string concatenation
+👉 Other operators → number conversion
+
+Interview Traps ⚠️
+❌ Using new String()
+let str = new String("Hello");
+typeof str; // object
+Always use:
+let str = "Hello";
+
+difference between slice and substring
+
+👉 end index is not included in both.
+
+1️⃣ slice()
+✅ Supports negative index
+Negative index means count from end
+let str = "JavaScript";
+str.slice(0, 4);   // "Java"
+str.slice(4, 10);  // "Script"
+str.slice(-6);     // "Script"
+str.slice(-10, -6); // "Java"
+❌ If start > end → returns empty string
+str.slice(5, 2); // ""
+
+2️⃣ substring()
+❌ Does NOT support negative index
+Negative values are treated as 0
+let str = "JavaScript";
+str.substring(0, 4);   // "Java"
+str.substring(4, 10);  // "Script"
+str.substring(-6);     // "JavaScript"
+✅ If start > end → it swaps them
+str.substring(5, 2); // "vaS"

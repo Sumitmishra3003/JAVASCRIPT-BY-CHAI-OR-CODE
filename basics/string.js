@@ -1,10 +1,10 @@
 const name = "Sumit"
 const count = 10
 
-console.log(name + count + " value")  // concatination of string
+//console.log(name + count + " value")  // concatination of string
 // but the above syntex is outdated so we use modern syntex
 
-console.log(`hello my name is ${name} and my count is ${count}`)
+//console.log(`hello my name is ${name} and my count is ${count}`)
 //we shuold use back tick(``) instead of double quots
 
 const gamename = new String('sumit-sm') // another way of declear the string

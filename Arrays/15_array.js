@@ -25,3 +25,6 @@ let score1 = 200
 let score2 = 300
 let score3 = 400
 console.log(Array.of(score1, score2, score3)) // converts other element into array
+let cast = "mishra"
+console.log(Array.from(cast))
+console.log(Array.of(cast))

@@ -1,0 +1,391 @@
+Arrays
+
+👉 An array is a collection used to store multiple values in one variable.
+we can include the element of different datatypes in same array
+
+Arrays are Mutable ❗
+You can change array elements.
+let arr = [1, 2, 3];
+arr[0] = 100;
+console.log(arr); // [100, 2, 3]
+
+Array Length
+let fruits = ["apple", "banana", "mango"];
+fruits.length; // 3
+
+methods of arrays
+
+➕ Add Elements
+push() → add at end
+arr.push(4);
+unshift() → add at start
+arr.unshift(0);
+
+➖ Remove Elements
+pop() → remove from end
+arr.pop();
+shift() → remove from start
+arr.shift();
+
+🔹 slice() in Arrays
+
+✅ What slice() does
+👉 slice() extracts a portion of an array and
+👉 returns a new array
+👉 does NOT change the original array
+Syntax
+array.slice(start, end)
+start → index to begin
+end → index to stop (not included)
+
+🧪 Example 1: Basic slicing
+let arr = [10, 20, 30, 40, 50];
+let result = arr.slice(1, 4);
+console.log(result); // [20, 30, 40]
+console.log(arr);    // [10, 20, 30, 40, 50]
+✔️ Original array stays unchanged
+
+🧪 Example 2: Omitting end
+arr.slice(2);  // if we pass only one argument then it will go upto the end
+// [30, 40, 50]
+
+🧪 Example 3: Negative index (IMPORTANT)
+Negative index = count from end
+arr.slice(-3);
+// [30, 40, 50]
+arr.slice(-4, -1);
+// [20, 30, 40]
+
+
+🧪 Example 4: start > end
+arr.slice(4, 2); // []
+
+🔑 Summary of slice()
+Non-destructive
+Returns new array
+Supports negative index
+Used for copying or extracting data
+
+🔥 splice() in Arrays
+❗ What splice() does
+👉 splice() changes the original array
+👉 Used to add, remove, or replace elements
+Syntax
+array.splice(start, deleteCount, item1, item2, ...)
+
+🧪 Example 1: Removing elements
+let arr = [10, 20, 30, 40, 50];
+arr.splice(1, 2);
+console.log(arr); // [10, 40, 50]
+👉 Removes:
+Start at index 1
+Remove 2 elements (20, 30)
+
+🧪 Example 2: Removing and returning elements
+let removed = arr.splice(1, 2);
+console.log(removed); // [20, 30]
+console.log(arr);     // [10, 40, 50]
+
+🧪 Example 3: Adding elements
+let arr = [10, 20, 30];
+arr.splice(1, 0, 15, 18);
+console.log(arr);
+// [10, 15, 18, 20, 30]
+👉 deleteCount = 0 → nothing removed
+
+🧪 Example 4: Replacing elements
+let arr = [10, 20, 30, 40];
+arr.splice(1, 2, 99, 100);
+console.log(arr);
+// [10, 99, 100, 40]
+
+🧪 Example 5: Negative index
+let arr = [10, 20, 30, 40];
+arr.splice(-2, 1);
+console.log(arr);
+// [10, 20, 40]
+👉 Starts from end
+
+🔥 slice() vs splice() 
+Feature	                 slice()	      splice()
+Changes original array	❌ No        	✅ Yes
+Returns               	New array	      Removed elements
+Add elements          	❌ No        	✅ Yes
+Remove elements       	❌ No	        ✅ Yes
+Replace elements      	❌ No	        ✅ Yes
+Negative index	        ✅ Yes       	✅ Yes
+Use case              	Copy / extract 	Modify array
+
+loops in array : 
+
+1️⃣ for loop (classic & most powerful)
+🔹 Syntax
+for (let i = 0; i < arr.length; i++) {
+  // code
+}
+🧠 How it works
+You control index
+You control start, end, step
+Works everywhere (old & new JS)
+
+🧪 Example
+let arr = [10, 20, 30, 40];
+for (let i = 0; i < arr.length; i++) {
+  console.log(arr[i]);
+}
+Output
+10
+20
+30
+30
+40
+
+🔥 Why use for?
+✔️ Full control
+✔️ Can use break and continue
+✔️ Can loop backwards
+for (let i = arr.length - 1; i >= 0; i--) {
+  console.log(arr[i]);
+}
+❌ Downsides
+More code
+Slightly less readable
+
+2️⃣ for...of loop (modern & clean)
+🔹 Syntax
+for (let value of arr) {
+  // code
+}
+🧠 How it works
+Directly gives values
+No index handling
+Very readable
+
+🧪 Example
+let arr = [10, 20, 30, 40];
+for (let value of arr) {
+  console.log(value);
+}
+
+🔍 Getting index in for...of
+You can’t directly, but workaround:
+for (let [index, value] of arr.entries()) {
+  console.log(index, value);
+}
+🔥 Why use for...of?
+✔️ Clean syntax
+✔️ Best for read-only iteration
+✔️ Supports break and continue
+
+❌ Limitations
+No direct index
+Not supported in very old browsers (rare now)
+
+For-in loop :// Avoid in case of array
+it is used to print the index value, it does not directly print the actual value
+const heros = ['spidy', 'hulk', 'ironman', 'sumit']
+for(const key in heros){
+    console.log(key);  // for in loop prints only key value and key value is string
+}
+for(const key in heros){
+    console.log((heros[key])) // this is how we print actual values in array using for in loop
+}
+
+For-each loop    
+const coding = ['js', 'cpp', 'python', 'ruby'];
+coding.forEach(function (item, index, arr) {// we can print item, index and array alone
+   console.log(item, index, arr); 
+})  // this is a call back function so it does not have a name
+
+** why we avoid for in loop in array:
+because for in loop gives thekey value that is string
+It includes custom properties
+Arrays are objects, so you can add properties:
+let arr = [10, 20, 30];
+arr.extra = 100;
+for (let i in arr) {
+  console.log(i);
+}
+Output
+0
+1
+2
+extra
+ extra is NOT an array element!
+
+ Map in arrays
+ 👉 map() is an array method
+👉 It creates a NEW array
+👉 By applying a function to each element of the original array
+📌 Original array is NOT changed
+🔹 Syntax
+array.map((value, index, array) => {
+  return newValue;
+});
+value → current element
+index → index of element
+array → original array (optional)
+
+🧪 Basic Example
+let nums = [1, 2, 3, 4];
+let doubled = nums.map(num => num * 2);
+console.log(doubled);
+// [2, 4, 6, 8]
+console.log(nums);
+// [1, 2, 3, 4]
+✔️ New array created
+✔️ Original array unchanged
+
+🔹 Using index in map()
+let arr = [10, 20, 30];
+let result = arr.map((value, index) => {
+  return value + index;
+});
+// [10, 21, 32]
+
+map() with condition (IMPORTANT)
+let nums = [1, 2, 3, 4];
+let result = nums.map(n => {
+  if (n % 2 === 0) {
+    return n * 2;
+  }
+  return n;
+});
+// [1, 4, 3, 8]
+
+⚠️ Common Mistake
+❌ Forgetting to return value:
+let result = nums.map(n => {
+  n * 2;
+});
+console.log(result);
+// [undefined, undefined, undefined]
+if we use "{}" then we have to return the value
+
+📝 Interview One-liner
+map() creates a new array by applying a function to each element of an existing array without modifying it.
+
+🔥 Quick Summary
+map() returns a new array
+Does not change original array
+Best for transforming data
+Always return a value
+Chainable with other methods
+
+filter in arrays
+
+👉 filter() is an array method
+👉 It creates a NEW array
+👉 It returns only those elements that pass a condition
+📌 Original array is NOT modified
+
+🔹 Syntax
+array.filter((value, index, array) => {
+  return condition; // true or false
+});
+value → current element
+index → index (optional)
+array → original array (optional)
+
+🧪 Basic Example
+let nums = [1, 2, 3, 4, 5, 6];
+let evenNums = nums.filter(num => num % 2 === 0);  // here we do not use "{}" so we do not return the value
+console.log(evenNums);
+// [2, 4, 6]
+✔️ Only values that return true are kept
+✔️ New array created
+
+🔹 filter() vs map() (VERY IMPORTANT)
+Feature	               filter()	        map()
+Returns new array   	✅ Yes	          ✅ Yes
+Changes array size  	✅ Yes         	❌ No
+Used for            	Selecting data	 Transforming data
+Return value        	true / false    	new value
+
+🔹 When to use filter()
+✔️ When you want to select specific elements
+✔️ When result array size may change
+✔️ When condition-based selection is needed
+❌ Not for transforming values → use map()
+
+📝 Interview One-liner
+filter() creates a new array containing elements that satisfy a given condition.
+
+Reduce in array
+
+👉 reduce() reduces an array to a single value
+👉 That value can be:
+number
+string
+object
+array
+anything
+📌 It processes the array one element at a time and builds a result.
+
+🔹 Syntax (MOST IMPORTANT)
+array.reduce((accumulator, currentValue, index, array) => {
+  return updatedAccumulator;
+}, initialValue);
+🔍 Parameters Explained
+1️⃣ accumulator (acc)
+Stores the result so far
+Value returned in previous iteration
+2️⃣ currentValue (curr)
+Current element of the array
+3️⃣ index (optional)
+Index of current element
+4️⃣ array (optional)
+Original array
+5️⃣ initialValue
+Starting value of accumulator
+
+🧪 Example 1: Sum of numbers
+let nums = [1, 2, 3, 4];
+let sum = nums.reduce((acc, curr) => {
+  return acc + curr;
+}, 0);
+console.log(sum);
+// 10
+
+🔹 When to use reduce()
+✔️ When you want:
+Sum
+Count
+Group
+Transform into object
+Flatten arrays
+Complex logic
+
+📝 Interview One-liner
+reduce() executes a reducer function on each array element and returns a single accumulated value.
+
+Some other functionalities of array
+
+const marvel_heros = ["thor","ironman", "spiderman"]
+const dc_heros = ["superan", "flash", "batman"]
+
+//marval_heros.push(dc_heros)//it return the array inside the array
+// push function add the elemnt in the existing array
+console.log(marvel_heros)
+
+const allheros = marvel_heros.concat(dc_heros)
+console.log(allheros)
+// concat funstion gives the new array thats why we need to create the new 
+// variable 'allheros' to hold the new array
+
+// there is another way to merge the two or more then two array 
+const all_new_heros = [...marvel_heros, ...dc_heros]
+console.log(all_new_heros)
+
+👉 flat() is an array method
+👉 It removes nested arrays and converts them into a single array
+const another_array = [1,2,3, [4,5,6], 7, [6,7,[4,5]]]
+const real_another_array = another_array.flat(Infinity)
+console.log(real_another_array) // here infinity is the level of nesting
+
+let cast = "mishra"
+console.log(Array.from(cast))  // output - ['m', 'i', 's', 'h', 'r', 'a' ]
+console.log(Array.of(cast))   // output - ['mishra']
+📝 Interview One-liner
+Array.from() converts iterable or array-like objects into arrays, while Array.of() creates a new array from the provided arguments.
+
